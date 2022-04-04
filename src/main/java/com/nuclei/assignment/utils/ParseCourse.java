@@ -1,8 +1,8 @@
-package assign2.utils;
+package com.nuclei.assignment.utils;
 
-import assign2.constants.CourseConstants;
-import assign2.exceptions.CourseInputException;
-import assign2.models.Course;
+import com.nuclei.assignment.constants.CourseConstants;
+import com.nuclei.assignment.exceptions.CourseInputException;
+import com.nuclei.assignment.models.Course;
 import java.util.ArrayList;
 import java.util.List;
 

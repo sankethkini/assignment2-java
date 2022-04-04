@@ -1,8 +1,8 @@
-package assign2.utils;
+package com.nuclei.assignment.utils;
 
-import assign2.exceptions.RollNumberExistsException;
-import assign2.models.User;
-import assign2.services.storage.Storage;
+import com.nuclei.assignment.exceptions.RollNumberExistsException;
+import com.nuclei.assignment.models.User;
+import com.nuclei.assignment.services.storage.Storage;
 import java.util.Objects;
 
 public class CheckIfRollExists {

@@ -1,4 +1,4 @@
-package assign2.constants;
+package com.nuclei.assignment.constants;
 
 public class DisplayConstants {
   public static final String line = "-------------------------------";

@@ -1,6 +1,6 @@
-package assign2.utils;
+package com.nuclei.assignment.utils;
 
-import assign2.exceptions.InputValidatorException;
+import com.nuclei.assignment.exceptions.InputValidatorException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

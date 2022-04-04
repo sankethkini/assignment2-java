@@ -1,6 +1,6 @@
-package assign2.utils;
+package com.nuclei.assignment.utils;
 
-import assign2.exceptions.InputValidatorException;
+import com.nuclei.assignment.exceptions.InputValidatorException;
 
 public class InputValidators {
   public static void validate(String name, String rollNum, String address, Integer age)

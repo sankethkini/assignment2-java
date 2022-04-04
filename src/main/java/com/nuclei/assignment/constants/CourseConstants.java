@@ -1,6 +1,6 @@
-package assign2.constants;
+package com.nuclei.assignment.constants;
 
-import assign2.models.Course;
+import com.nuclei.assignment.models.Course;
 import java.util.Arrays;
 import java.util.List;
 

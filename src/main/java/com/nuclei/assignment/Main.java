@@ -1,4 +1,4 @@
-package assign2;
+package com.nuclei.assignment;
 
 public class Main {
   public static void main(String[] args) {

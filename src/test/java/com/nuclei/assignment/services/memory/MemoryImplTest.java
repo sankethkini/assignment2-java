@@ -1,10 +1,10 @@
-package assign2.services.memory;
+package com.nuclei.assignment.services.memory;
 
-import assign2.enums.Field;
-import assign2.enums.Order;
-import assign2.models.User;
-import assign2.services.storage.MemoryImpl;
-import assign2.services.storage.Storage;
+import com.nuclei.assignment.enums.Field;
+import com.nuclei.assignment.enums.Order;
+import com.nuclei.assignment.models.User;
+import com.nuclei.assignment.services.storage.MemoryImpl;
+import com.nuclei.assignment.services.storage.Storage;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;

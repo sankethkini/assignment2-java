@@ -1,4 +1,4 @@
-package assign2.models;
+package com.nuclei.assignment.models;
 
 import java.io.Serializable;
 

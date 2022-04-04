@@ -1,4 +1,4 @@
-package assign2.enums;
+package com.nuclei.assignment.enums;
 
 public enum Order {
   ASC,

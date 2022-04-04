@@ -1,14 +1,14 @@
-package assign2;
+package com.nuclei.assignment;
 
-import assign2.constants.DisplayConstants;
-import assign2.constants.FileConstants;
-import assign2.enums.Field;
-import assign2.enums.Order;
-import assign2.models.User;
-import assign2.services.storage.FileStorage;
-import assign2.services.storage.MemoryImpl;
-import assign2.services.storage.Storage;
-import assign2.services.userservice.UserService;
+import com.nuclei.assignment.constants.DisplayConstants;
+import com.nuclei.assignment.constants.FileConstants;
+import com.nuclei.assignment.enums.Field;
+import com.nuclei.assignment.enums.Order;
+import com.nuclei.assignment.models.User;
+import com.nuclei.assignment.services.storage.FileStorage;
+import com.nuclei.assignment.services.storage.MemoryImpl;
+import com.nuclei.assignment.services.storage.Storage;
+import com.nuclei.assignment.services.userservice.UserService;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;

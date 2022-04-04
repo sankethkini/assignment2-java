@@ -1,6 +1,6 @@
-package assign2.utils;
+package com.nuclei.assignment.utils;
 
-import assign2.exceptions.CourseInputException;
+import com.nuclei.assignment.exceptions.CourseInputException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

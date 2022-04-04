@@ -1,5 +1,35 @@
 plugins {
     id 'java'
+    id 'pmd'
+    id 'checkstyle'
+}
+pmd {
+    consoleOutput = true
+    toolVersion = "6.21.0"
+    ruleSets = ["config/pmd/ruleset.xml"]
+}
+
+tasks.withType(Checkstyle) {
+    showViolations true
+}
+
+checkstyle {
+    toolVersion '8.11'
+}
+
+checkstyleMain {
+    source ='src/main/java'
+}
+
+tasks.withType(Checkstyle).each { checkstyleTask ->
+    checkstyleTask.doLast {
+        reports.all { report ->
+            def outputFile = report.destination
+            if (outputFile.exists() && outputFile.text.contains("<error ")) {
+                throw new GradleException("There were checkstyle warnings! For more info check $outputFile")
+            }
+        }
+    }
 }
 
 group 'org.example'

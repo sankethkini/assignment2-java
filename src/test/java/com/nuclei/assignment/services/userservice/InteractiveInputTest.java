@@ -1,4 +1,4 @@
-package assign2.services.userservice;
+package com.nuclei.assignment.services.userservice;
 
 import static org.mockito.Mockito.mock;
 
