@@ -1,9 +1,9 @@
-package assign2.services.storage;
+package com.nuclei.assignment.services.storage;
 
-import assign2.enums.Field;
-import assign2.enums.Order;
-import assign2.models.User;
-import assign2.utils.Comparators;
+import com.nuclei.assignment.enums.Field;
+import com.nuclei.assignment.enums.Order;
+import com.nuclei.assignment.models.User;
+import com.nuclei.assignment.utils.Comparators;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -30,7 +30,7 @@ public class MemoryImpl implements Storage {
       for (User u : users) {
         this.users.add(u);
       }
-      Collections.sort(this.users, new Comparators.NameComparator());
+      Collections.sort(this.users, Comparators.NameComparator);
     }
   }
 
@@ -39,14 +39,11 @@ public class MemoryImpl implements Storage {
     List<User> retUsers = users;
     switch (field) {
       case AGE:
-        Comparators.AgeComparator comp = new Comparators.AgeComparator();
-        Collections.sort(retUsers, comp);
+        Collections.sort(retUsers, Comparators.AgeComparator);
       case ADDRESS:
-        Comparators.AddressComparator comp1 = new Comparators.AddressComparator();
-        Collections.sort(retUsers, comp1);
+        Collections.sort(retUsers, Comparators.AddressComparator);
       case ROLL:
-        Comparators.RollNumComparator comp2 = new Comparators.RollNumComparator();
-        Collections.sort(retUsers, comp2);
+        Collections.sort(retUsers, Comparators.RollNumComparator);
     }
     if (order == Order.DESC) {
       Collections.reverse(retUsers);

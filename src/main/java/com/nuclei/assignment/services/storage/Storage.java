@@ -1,8 +1,8 @@
-package assign2.services.storage;
+package com.nuclei.assignment.services.storage;
 
-import assign2.enums.Field;
-import assign2.enums.Order;
-import assign2.models.User;
+import com.nuclei.assignment.enums.Field;
+import com.nuclei.assignment.enums.Order;
+import com.nuclei.assignment.models.User;
 import java.util.List;
 
 public interface Storage {
