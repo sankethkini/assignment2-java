@@ -18,7 +18,7 @@ public class FileStorageTest {
   @Test
   @DisplayName("check storing and reading from file")
   public void testIO() {
-    users.add(new User("some", 12, "some address", "12s", CourseConstants.courses));
+    users.add(new User("some", 12, "some address", "12s", CourseConstants.COURSES));
     Assertions.assertDoesNotThrow(
         () -> {
           fileStorage.save(users);

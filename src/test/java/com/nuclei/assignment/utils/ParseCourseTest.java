@@ -12,8 +12,8 @@ public class ParseCourseTest {
   public void testBlankInput() {
 
     Assertions.assertThrows(
-        CourseInputException.class
-        , () -> {
+        CourseInputException.class,
+        () -> {
           ParseCourse.parse("");
         }
     );
@@ -23,8 +23,8 @@ public class ParseCourseTest {
   @DisplayName("check if input is not formatted correctly")
   public void testWrongFormat() {
     Assertions.assertThrows(
-        CourseInputException.class
-        , () -> {
+        CourseInputException.class,
+        () -> {
           ParseCourse.parse("A,B.C,D");
         }
     );
@@ -34,10 +34,8 @@ public class ParseCourseTest {
   @DisplayName("check if course code is not available")
   public void testNotAvailable() {
     Assertions.assertThrows(
-        CourseInputException.class
-        , () -> {
-          ParseCourse.parse("A,B,C,G");
-        }
+        CourseInputException.class,
+         () -> {ParseCourse.parse("A,B,C,G");}
     );
   }
 
@@ -45,8 +43,8 @@ public class ParseCourseTest {
   @DisplayName("check if number of course entered is not equal to max courses")
   public void testNotEqual() {
     Assertions.assertThrows(
-        CourseInputException.class
-        , () -> {
+        CourseInputException.class,
+         () -> {
           ParseCourse.parse("A,B,F");
         }
     );
