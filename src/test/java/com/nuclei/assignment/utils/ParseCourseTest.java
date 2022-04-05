@@ -13,9 +13,8 @@ public class ParseCourseTest {
 
     Assertions.assertThrows(
         CourseInputException.class,
-        () -> {
-          ParseCourse.parse("");
-        }
+        () -> ParseCourse.parse("")
+
     );
   }
 
@@ -24,9 +23,8 @@ public class ParseCourseTest {
   public void testWrongFormat() {
     Assertions.assertThrows(
         CourseInputException.class,
-        () -> {
-          ParseCourse.parse("A,B.C,D");
-        }
+        () -> ParseCourse.parse("A,B.C,D")
+
     );
   }
 
@@ -35,7 +33,7 @@ public class ParseCourseTest {
   public void testNotAvailable() {
     Assertions.assertThrows(
         CourseInputException.class,
-         () -> {ParseCourse.parse("A,B,C,G");}
+        () -> ParseCourse.parse("A,B,C,G")
     );
   }
 
@@ -44,9 +42,8 @@ public class ParseCourseTest {
   public void testNotEqual() {
     Assertions.assertThrows(
         CourseInputException.class,
-         () -> {
-          ParseCourse.parse("A,B,F");
-        }
+        () -> ParseCourse.parse("A,B,F")
+
     );
   }
 
@@ -54,9 +51,7 @@ public class ParseCourseTest {
   @DisplayName("check if everything is correct")
   public void testCorrect() {
     Assertions.assertDoesNotThrow(
-        () -> {
-          ParseCourse.parse("A,B,F,D");
-        }
+        () -> ParseCourse.parse("A,B,F,D")
     );
   }
 }

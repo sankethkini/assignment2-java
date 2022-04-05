@@ -12,9 +12,7 @@ public class InputValidatorsTest {
   public void testBlankName() {
     Assertions.assertThrows(
         InputValidatorException.class,
-         () -> {
-          InputValidators.validate("", "12s", "some address", 12);
-        }
+        () -> InputValidators.validate("", "12s", "some address", 12)
     );
   }
 
@@ -23,9 +21,7 @@ public class InputValidatorsTest {
   public void testNegativeAge() {
     Assertions.assertThrows(
         InputValidatorException.class,
-         () -> {
-          InputValidators.validate("some", "12s", "some address", -12);
-        }
+        () -> InputValidators.validate("some", "12s", "some address", -12)
     );
   }
 
@@ -34,9 +30,7 @@ public class InputValidatorsTest {
   public void testBlankAddress() {
     Assertions.assertThrows(
         InputValidatorException.class,
-         () -> {
-          InputValidators.validate("some", "12s", "", 12);
-        }
+        () -> InputValidators.validate("some", "12s", "", 12)
     );
   }
 
@@ -45,9 +39,7 @@ public class InputValidatorsTest {
   public void testBlankRoll() {
     Assertions.assertThrows(
         InputValidatorException.class,
-         () -> {
-          InputValidators.validate("some", "", "some address", 12);
-        }
+        () -> InputValidators.validate("some", "", "some address", 12)
     );
   }
 }

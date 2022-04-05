@@ -20,9 +20,7 @@ public class AddUserTest {
   public void addUserAllCorrect() {
 
     Assertions.assertDoesNotThrow(
-        () -> {
-          AddUser.add(memory, "some", "12s", "some address", 12, "A,B,C,D");
-        }
+        () -> AddUser.add(memory, "some", "12s", "some address", 12, "A,B,C,D")
     );
 
   }

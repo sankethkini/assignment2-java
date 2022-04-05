@@ -20,9 +20,7 @@ public class FileStorageTest {
   public void testIO() {
     users.add(new User("some", 12, "some address", "12s", CourseConstants.COURSES));
     Assertions.assertDoesNotThrow(
-        () -> {
-          fileStorage.save(users);
-        }
+        () -> fileStorage.save(users)
     );
 
     Assertions.assertDoesNotThrow(

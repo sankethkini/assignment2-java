@@ -50,7 +50,7 @@ public class MemoryImplTest {
   @Test
   @DisplayName("check if display by age descending is correct")
   public void testDisplayByAgeDesc() {
-    User[] users = new User[2];
+
 
     List<User> users1 = new ArrayList<>();
     users1.add(a);
@@ -61,7 +61,7 @@ public class MemoryImplTest {
         }
     );
 
-
+    User[] users = new User[2];
     users[0] = b;
     users[1] = a;
 
@@ -75,7 +75,7 @@ public class MemoryImplTest {
   @Test
   @DisplayName("check if display by age ascending is correct")
   public void testDisplayByAgeAsc() {
-    User[] users = new User[2];
+
 
     List<User> users1 = new ArrayList<>();
     users1.add(b);
@@ -86,6 +86,7 @@ public class MemoryImplTest {
         }
     );
 
+    User[] users = new User[2];
     users[0] = a;
     users[1] = b;
 
@@ -99,7 +100,7 @@ public class MemoryImplTest {
   @Test
   @DisplayName("check if display by address descending is correct")
   public void testDisplayByAddressDesc() {
-    User[] users = new User[2];
+
 
     List<User> users1 = new ArrayList<>();
     users1.add(a);
@@ -110,6 +111,7 @@ public class MemoryImplTest {
         }
     );
 
+    User[] users = new User[2];
     users[0] = b;
     users[1] = a;
 
@@ -123,7 +125,7 @@ public class MemoryImplTest {
   @Test
   @DisplayName("check if display by address ascending is correct")
   public void testDisplayByAddressAsc() {
-    User[] users = new User[2];
+
 
     List<User> users1 = new ArrayList<>();
     users1.add(b);
@@ -134,6 +136,7 @@ public class MemoryImplTest {
         }
     );
 
+    User[] users = new User[2];
     users[0] = a;
     users[1] = b;
 
@@ -147,7 +150,7 @@ public class MemoryImplTest {
   @Test
   @DisplayName("check if display by roll number descending is correct")
   public void testDisplayByRollDesc() {
-    User[] users = new User[2];
+
 
     List<User> users1 = new ArrayList<>();
     users1.add(a);
@@ -158,6 +161,7 @@ public class MemoryImplTest {
         }
     );
 
+    User[] users = new User[2];
     users[0] = b;
     users[1] = a;
 
@@ -171,7 +175,7 @@ public class MemoryImplTest {
   @Test
   @DisplayName("check if display by roll number ascending is correct")
   public void testDisplayByRollAsc() {
-    User[] users = new User[2];
+
 
     List<User> users1 = new ArrayList<>();
     users1.add(b);
@@ -182,6 +186,7 @@ public class MemoryImplTest {
         }
     );
 
+    User[] users = new User[2];
     users[0] = a;
     users[1] = b;
 
@@ -195,7 +200,7 @@ public class MemoryImplTest {
   @Test
   @DisplayName("check if users are saving correctly in order single user")
   public void testSaveSingle() {
-    User[] users = new User[2];
+
 
     List<User> users1 = new ArrayList<>();
     users1.add(a);
@@ -212,6 +217,7 @@ public class MemoryImplTest {
     );
 
     // ordering users by name
+    User[] users = new User[2];
     users[0] = b;
     users[1] = a;
 
