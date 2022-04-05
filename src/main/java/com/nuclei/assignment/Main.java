@@ -1,6 +1,9 @@
 package com.nuclei.assignment;
 
 public class Main {
+  /**
+   * create a new application and run it.
+   **/
   public static void main(String[] args) {
     try {
       Application application = new Application();

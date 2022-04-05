@@ -10,5 +10,5 @@ public class Comparators {
 
   public static Comparator<User> AddressComparator = Comparator.comparing(User::getAddress);
 
-  public static Comparator<User> NameComparator =Comparator.comparing(User::getName);
+  public static Comparator<User> NameComparator = Comparator.comparing(User::getName);
 }

@@ -14,36 +14,43 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Application {
-  private Storage storage;
+  private Storage file;
   private Storage memory;
   private UserService userService;
   private Scanner sc;
 
+  /**
+   * initialize file and memory storing.
+   */
   public Application() throws Exception {
-    this.storage = new FileStorage(FileConstants.fileName);
+    this.file = new FileStorage(FileConstants.FILE_NAME);
     this.memory = new MemoryImpl();
-    List<User> users = storage.readAll(Field.NAME, Order.ASC);
+    List<User> users = file.readAll(Field.NAME, Order.ASC);
 
     if (Objects.nonNull(users) && users.size() != 0) {
       this.memory.save(users);
     }
 
     this.sc = new Scanner(System.in);
-    this.userService = new UserService(sc, memory, storage);
+    this.userService = new UserService(sc, memory, file);
   }
 
+  /**
+   * run method is used to take input from user.
+   * switch it to appropriate service function.
+   */
   public void run() {
     try {
       boolean cont = true;
       do {
-        System.out.println(DisplayConstants.line);
+        System.out.println(DisplayConstants.LINE);
         System.out.print(
-            "Select a option\n"
-                + "1. Add new user\n"
-                + "2. Display all users\n"
-                + "3. Delete user\n"
-                + "4. Save user details\n"
-                + "5. Exit"
+            DisplayConstants.SELECT_OPTION
+                + DisplayConstants.NEW_USER
+                + DisplayConstants.DISPLAY
+                + DisplayConstants.DELETE
+                + DisplayConstants.SAVE
+                + DisplayConstants.EXIT
         );
         int option = sc.nextInt();
         sc.nextLine();
@@ -65,9 +72,9 @@ public class Application {
             cont = false;
             break;
           default:
-            System.out.println("enter the correct option");
+            System.out.println(DisplayConstants.CORR_OPTION);
         }
-        System.out.println(DisplayConstants.line);
+        System.out.println(DisplayConstants.LINE);
       } while (cont);
 
     } catch (Exception e) {

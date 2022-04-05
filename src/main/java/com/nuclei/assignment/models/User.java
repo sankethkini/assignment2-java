@@ -10,6 +10,9 @@ public class User implements Serializable {
   private final String rollNum;
   private final List<Course> courses;
 
+  /**
+   * create new user with all fields.
+   */
   public User(String name, Integer age, String address, String rollNum, List<Course> courses) {
     this.name = name;
     this.age = age;

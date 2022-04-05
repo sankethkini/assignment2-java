@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CourseConstants {
-  public static final Integer maxCourses = 4;
-  public static final List<Course> courses = Arrays.asList(
+  public static final Integer MAX_COURSES = 4;
+  public static final List<Course> COURSES = Arrays.asList(
       new Course("A", "some A"),
       new Course("B", "some B"),
       new Course("C", "some C"),

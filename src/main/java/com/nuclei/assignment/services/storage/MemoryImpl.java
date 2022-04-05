@@ -40,10 +40,15 @@ public class MemoryImpl implements Storage {
     switch (field) {
       case AGE:
         Collections.sort(retUsers, Comparators.AgeComparator);
+        break;
       case ADDRESS:
         Collections.sort(retUsers, Comparators.AddressComparator);
+        break;
       case ROLL:
         Collections.sort(retUsers, Comparators.RollNumComparator);
+        break;
+      default:
+        retUsers = users;
     }
     if (order == Order.DESC) {
       Collections.reverse(retUsers);
