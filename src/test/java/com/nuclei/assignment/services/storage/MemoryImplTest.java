@@ -13,8 +13,8 @@ import org.junit.jupiter.api.Test;
 
 public class MemoryImplTest {
   // for testing
-  private final User a = new User("some2", 12, "some address1", "12s", null);
-  private final User b = new User("some1", 14, "some address2", "13s", null);
+  private final User user1 = new User("some2", 12, "some address1", "12s", null);
+  private final User user2 = new User("some1", 14, "some address2", "13s", null);
   private Storage memory;
 
   @BeforeEach
@@ -26,8 +26,8 @@ public class MemoryImplTest {
   @DisplayName("check if users are saving correctly in order")
   public void testSave() {
     User[] users = new User[2];
-    users[0] = a;
-    users[1] = b;
+    users[0] = user1;
+    users[1] = user2;
     List<User> users1 = Arrays.asList(users);
     Assertions.assertDoesNotThrow(
         () -> {
@@ -37,8 +37,8 @@ public class MemoryImplTest {
 
 
     // ordering users by name
-    users[0] = b;
-    users[1] = a;
+    users[0] = user2;
+    users[1] = user1;
 
     List<User> users2 = Assertions.assertDoesNotThrow(() -> {
       return memory.readAll(Field.NAME, Order.ASC);
@@ -53,8 +53,8 @@ public class MemoryImplTest {
 
 
     List<User> users1 = new ArrayList<>();
-    users1.add(a);
-    users1.add(b);
+    users1.add(user1);
+    users1.add(user2);
     Assertions.assertDoesNotThrow(
         () -> {
           memory.save(users1);
@@ -62,8 +62,8 @@ public class MemoryImplTest {
     );
 
     User[] users = new User[2];
-    users[0] = b;
-    users[1] = a;
+    users[0] = user2;
+    users[1] = user1;
 
     List<User> users2 = Assertions.assertDoesNotThrow(() -> {
       return memory.readAll(Field.AGE, Order.DESC);
@@ -78,8 +78,8 @@ public class MemoryImplTest {
 
 
     List<User> users1 = new ArrayList<>();
-    users1.add(b);
-    users1.add(a);
+    users1.add(user2);
+    users1.add(user1);
     Assertions.assertDoesNotThrow(
         () -> {
           memory.save(users1);
@@ -87,8 +87,8 @@ public class MemoryImplTest {
     );
 
     User[] users = new User[2];
-    users[0] = a;
-    users[1] = b;
+    users[0] = user1;
+    users[1] = user2;
 
     List<User> users2 = Assertions.assertDoesNotThrow(() -> {
       return memory.readAll(Field.AGE, Order.ASC);
@@ -103,8 +103,8 @@ public class MemoryImplTest {
 
 
     List<User> users1 = new ArrayList<>();
-    users1.add(a);
-    users1.add(b);
+    users1.add(user1);
+    users1.add(user2);
     Assertions.assertDoesNotThrow(
         () -> {
           memory.save(users1);
@@ -112,8 +112,8 @@ public class MemoryImplTest {
     );
 
     User[] users = new User[2];
-    users[0] = b;
-    users[1] = a;
+    users[0] = user2;
+    users[1] = user1;
 
     List<User> users2 = Assertions.assertDoesNotThrow(() -> {
       return memory.readAll(Field.ADDRESS, Order.DESC);
@@ -128,8 +128,8 @@ public class MemoryImplTest {
 
 
     List<User> users1 = new ArrayList<>();
-    users1.add(b);
-    users1.add(a);
+    users1.add(user2);
+    users1.add(user1);
     Assertions.assertDoesNotThrow(
         () -> {
           memory.save(users1);
@@ -137,8 +137,8 @@ public class MemoryImplTest {
     );
 
     User[] users = new User[2];
-    users[0] = a;
-    users[1] = b;
+    users[0] = user1;
+    users[1] = user2;
 
     List<User> users2 = Assertions.assertDoesNotThrow(() -> {
       return memory.readAll(Field.ADDRESS, Order.ASC);
@@ -153,8 +153,8 @@ public class MemoryImplTest {
 
 
     List<User> users1 = new ArrayList<>();
-    users1.add(a);
-    users1.add(b);
+    users1.add(user1);
+    users1.add(user2);
     Assertions.assertDoesNotThrow(
         () -> {
           memory.save(users1);
@@ -162,8 +162,8 @@ public class MemoryImplTest {
     );
 
     User[] users = new User[2];
-    users[0] = b;
-    users[1] = a;
+    users[0] = user2;
+    users[1] = user1;
 
     List<User> users2 = Assertions.assertDoesNotThrow(() -> {
       return memory.readAll(Field.ROLL, Order.DESC);
@@ -178,8 +178,8 @@ public class MemoryImplTest {
 
 
     List<User> users1 = new ArrayList<>();
-    users1.add(b);
-    users1.add(a);
+    users1.add(user2);
+    users1.add(user1);
     Assertions.assertDoesNotThrow(
         () -> {
           memory.save(users1);
@@ -187,8 +187,8 @@ public class MemoryImplTest {
     );
 
     User[] users = new User[2];
-    users[0] = a;
-    users[1] = b;
+    users[0] = user1;
+    users[1] = user2;
 
     List<User> users2 = Assertions.assertDoesNotThrow(() -> {
       return memory.readAll(Field.ROLL, Order.ASC);
@@ -203,13 +203,13 @@ public class MemoryImplTest {
 
 
     List<User> users1 = new ArrayList<>();
-    users1.add(a);
+    users1.add(user1);
     Assertions.assertDoesNotThrow(
         () -> {
           memory.save(users1);
         }
     );
-    users1.set(0, b);
+    users1.set(0, user2);
     Assertions.assertDoesNotThrow(
         () -> {
           memory.save(users1);
@@ -218,8 +218,8 @@ public class MemoryImplTest {
 
     // ordering users by name
     User[] users = new User[2];
-    users[0] = b;
-    users[1] = a;
+    users[0] = user2;
+    users[1] = user1;
 
     List<User> users2 = Assertions.assertDoesNotThrow(() -> {
       return memory.readAll(Field.NAME, Order.ASC);
@@ -232,14 +232,14 @@ public class MemoryImplTest {
   @DisplayName("check deletion if user is present")
   public void testDeletePresent() {
     List<User> users1 = new ArrayList<>();
-    users1.add(a);
+    users1.add(user1);
     Assertions.assertDoesNotThrow(
         () -> {
           memory.save(users1);
         }
     );
     User ret = memory.delete("12s");
-    Assertions.assertEquals(ret.getRollNum(), a.getRollNum());
+    Assertions.assertEquals(ret.getRollNum(), user1.getRollNum());
   }
 
   @Test
@@ -254,14 +254,14 @@ public class MemoryImplTest {
   @DisplayName("check read for user is present")
   public void testReadPresent() {
     List<User> users1 = new ArrayList<>();
-    users1.add(a);
+    users1.add(user1);
     Assertions.assertDoesNotThrow(
         () -> {
           memory.save(users1);
         }
     );
     User ret = memory.read("12s");
-    Assertions.assertEquals(ret.getRollNum(), a.getRollNum());
+    Assertions.assertEquals(ret.getRollNum(), user1.getRollNum());
   }
 
   @Test
