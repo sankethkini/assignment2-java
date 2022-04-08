@@ -1,18 +1,28 @@
 package com.nuclei.assignment.utils;
 
 import com.nuclei.assignment.exceptions.InputValidatorException;
+import com.nuclei.assignment.services.storage.MemoryImpl;
+import com.nuclei.assignment.services.storage.Storage;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class InputValidatorsTest {
+
+  private Storage memory;
+
+  @BeforeEach
+  public void init() throws Exception {
+    memory = new MemoryImpl(null);
+  }
 
   @Test
   @DisplayName("check if name is blank")
   public void testBlankName() {
     Assertions.assertThrows(
         InputValidatorException.class,
-        () -> InputValidators.validate("", "12s", "some address", 12)
+        () -> InputValidators.validate(this.memory, "", "12s", "some address", 12)
     );
   }
 
@@ -21,7 +31,7 @@ public class InputValidatorsTest {
   public void testNegativeAge() {
     Assertions.assertThrows(
         InputValidatorException.class,
-        () -> InputValidators.validate("some", "12s", "some address", -12)
+        () -> InputValidators.validate(this.memory, "some", "12s", "some address", -12)
     );
   }
 
@@ -30,7 +40,7 @@ public class InputValidatorsTest {
   public void testBlankAddress() {
     Assertions.assertThrows(
         InputValidatorException.class,
-        () -> InputValidators.validate("some", "12s", "", 12)
+        () -> InputValidators.validate(this.memory, "some", "12s", "", 12)
     );
   }
 
@@ -39,7 +49,7 @@ public class InputValidatorsTest {
   public void testBlankRoll() {
     Assertions.assertThrows(
         InputValidatorException.class,
-        () -> InputValidators.validate("some", "", "some address", 12)
+        () -> InputValidators.validate(this.memory, "some", "", "some address", 12)
     );
   }
 }

@@ -18,8 +18,8 @@ public class MemoryImplTest {
   private Storage memory;
 
   @BeforeEach
-  public void init() {
-    memory = new MemoryImpl();
+  public void init() throws Exception {
+    memory = new MemoryImpl(null);
   }
 
   @Test
