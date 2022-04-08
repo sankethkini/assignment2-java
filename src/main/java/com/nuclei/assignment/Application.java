@@ -1,45 +1,29 @@
 package com.nuclei.assignment;
 
 import com.nuclei.assignment.constants.DisplayConstants;
-import com.nuclei.assignment.constants.FileConstants;
-import com.nuclei.assignment.enums.Field;
-import com.nuclei.assignment.enums.Order;
-import com.nuclei.assignment.models.User;
-import com.nuclei.assignment.services.storage.FileStorage;
-import com.nuclei.assignment.services.storage.MemoryImpl;
 import com.nuclei.assignment.services.storage.Storage;
 import com.nuclei.assignment.services.userservice.UserService;
-import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Application {
   private Storage file;
   private Storage memory;
-  private UserService userService;
-  private Scanner sc;
+  private final UserService userService;
+  private final Scanner sc;
 
   /**
    * initialize file and memory storing.
    */
-  public Application() throws Exception {
-    this.file = new FileStorage(FileConstants.FILE_NAME);
-    this.memory = new MemoryImpl();
-    List<User> users = file.readAll(Field.NAME, Order.ASC);
-
-    if (Objects.nonNull(users) && users.size() != 0) {
-      this.memory.save(users);
-    }
-
-    this.sc = new Scanner(System.in);
-    this.userService = new UserService(sc, memory, file);
+  public Application(UserService userService, Scanner sc) {
+    this.userService = userService;
+    this.sc = sc;
   }
 
   /**
    * run method is used to take input from user.
    * switch it to appropriate service function.
    */
-  public void run() {
+  public void getUserInputAndAct() {
     try {
       boolean cont = true;
       do {
@@ -56,7 +40,7 @@ public class Application {
         sc.nextLine();
         switch (option) {
           case 1:
-            userService.userInput();
+            userService.userInputAndAdd();
             break;
           case 2:
             userService.display();
