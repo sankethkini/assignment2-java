@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'pmd'
+    id 'checkstyle'
+}
+pmd {
+    consoleOutput = true
+    toolVersion = "6.21.0"
+    ruleSets = ["config/pmd/ruleset.xml"]
+}
+
+tasks.withType(Checkstyle) {
+    showViolations true
+}
+
+checkstyle {
+    toolVersion '8.11'
+}
+
+checkstyleMain {
+    source ='src/main/java'
+}
+
+tasks.withType(Checkstyle).each { checkstyleTask ->
+    checkstyleTask.doLast {
+        reports.all { report ->
+            def outputFile = report.destination
+            if (outputFile.exists() && outputFile.text.contains("<error ")) {
+                throw new GradleException("There were checkstyle warnings! For more info check $outputFile")
+            }
+        }
+    }
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    implementation 'commons-logging:commons-logging:1.2'
+    testImplementation 'org.mockito:mockito-core:4.3.1'
+}
+
+test {
+    useJUnitPlatform()
+}
