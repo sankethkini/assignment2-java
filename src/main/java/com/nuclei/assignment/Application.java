@@ -6,10 +6,10 @@ import com.nuclei.assignment.services.userservice.UserService;
 import java.util.Scanner;
 
 public class Application {
-  private Storage file;
-  private Storage memory;
   private final UserService userService;
   private final Scanner sc;
+  private Storage file;
+  private Storage memory;
 
   /**
    * initialize file and memory storing.
@@ -20,22 +20,29 @@ public class Application {
   }
 
   /**
-   * run method is used to take input from user.
+   * menu for user for different operations.
+   * */
+  public void printMenu() {
+    System.out.println(DisplayConstants.LINE);
+    System.out.print(
+        DisplayConstants.SELECT_OPTION
+            + DisplayConstants.NEW_USER
+            + DisplayConstants.DISPLAY
+            + DisplayConstants.DELETE
+            + DisplayConstants.SAVE
+            + DisplayConstants.EXIT
+    );
+  }
+
+  /**
+   * start method is used to take input from user.
    * switch it to appropriate service function.
    */
-  public void getUserInputAndAct() {
+  public void start() {
     try {
       boolean cont = true;
       do {
-        System.out.println(DisplayConstants.LINE);
-        System.out.print(
-            DisplayConstants.SELECT_OPTION
-                + DisplayConstants.NEW_USER
-                + DisplayConstants.DISPLAY
-                + DisplayConstants.DELETE
-                + DisplayConstants.SAVE
-                + DisplayConstants.EXIT
-        );
+        printMenu();
         int option = sc.nextInt();
         sc.nextLine();
         switch (option) {
@@ -63,7 +70,6 @@ public class Application {
 
     } catch (Exception e) {
       System.out.println(e.getMessage());
-      System.exit(0);
     } finally {
       this.sc.close();
     }

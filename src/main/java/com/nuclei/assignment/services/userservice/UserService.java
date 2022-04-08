@@ -3,9 +3,12 @@ package com.nuclei.assignment.services.userservice;
 import com.nuclei.assignment.constants.DisplayConstants;
 import com.nuclei.assignment.enums.Field;
 import com.nuclei.assignment.enums.Order;
+import com.nuclei.assignment.models.Course;
 import com.nuclei.assignment.models.User;
 import com.nuclei.assignment.services.storage.Storage;
 import com.nuclei.assignment.utils.AddUser;
+import com.nuclei.assignment.utils.InputValidators;
+import com.nuclei.assignment.utils.ParseCourse;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
@@ -32,7 +35,7 @@ public class UserService {
   /**
    * take user input for creating new user.
    */
-  public void userInput() {
+  public void userInputAndAdd() {
     try {
       System.out.print(DisplayConstants.NAME_INPUT);
       final String userFullName = scan.nextLine();
@@ -46,7 +49,9 @@ public class UserService {
       scan.nextLine();
       System.out.print(DisplayConstants.COURSE_INPUT);
       String userCourses = scan.nextLine().toUpperCase();
-      AddUser.add(memory, userFullName, userRollNo, userAddress, userAge, userCourses);
+      List<Course> courses = ParseCourse.parse(userCourses);
+      InputValidators.validate(this.memory, userFullName, userRollNo, userAddress, userAge);
+      AddUser.add(memory, userFullName, userRollNo, userAddress, userAge, courses);
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
@@ -75,25 +80,24 @@ public class UserService {
     System.out.println(DisplayConstants.SAVE_CHANGES);
     System.out.print(DisplayConstants.YES_OR_NO);
     String op = scan.nextLine();
-    if (op.charAt(0) == 'y' || op.charAt(0) == 'Y') {
+    if (op.toUpperCase().charAt(0) == DisplayConstants.YES_OPTION) {
       this.save();
     }
     System.out.println(DisplayConstants.EXITING);
   }
 
   /**
-   * display all users based on different field ordered by ascending or descending.
-   */
-  public void display() throws Exception {
+   * field input for display.
+   * */
+  public Field fieldInput() {
     System.out.println(DisplayConstants.LINE);
     System.out.println(DisplayConstants.SORT_FIELD);
     System.out.println(DisplayConstants.NAME);
     System.out.println(DisplayConstants.ADDRESS);
     System.out.println(DisplayConstants.ROLL);
     System.out.println(DisplayConstants.AGE);
-    int op = scan.nextInt();
+    Integer op = scan.nextInt();
     Field field;
-    Order order;
     switch (op) {
       case 2:
         field = Field.ADDRESS;
@@ -107,17 +111,36 @@ public class UserService {
       default:
         field = Field.NAME;
     }
+    return field;
+  }
+
+  /**
+   * order input for display.
+   * */
+  public Order orderInput() {
+    Order order;
     System.out.println(
         DisplayConstants.ORDER_ENTER
             + DisplayConstants.ASC
             + DisplayConstants.DESC
     );
-    op = scan.nextInt();
+    Integer op = scan.nextInt();
     if (op == 1) {
       order = Order.ASC;
     } else {
       order = Order.DESC;
     }
+    return order;
+  }
+
+  /**
+   * display all users based on different field ordered by ascending or descending.
+   */
+  public void display() throws Exception {
+    Field field;
+    Order order;
+    field = fieldInput();
+    order = orderInput();
     List<User> users = this.memory.readAll(field, order);
     System.out.println(DisplayConstants.LINE);
     for (User u : users) {

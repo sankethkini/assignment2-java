@@ -7,27 +7,39 @@ import com.nuclei.assignment.utils.Comparators;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class MemoryImpl implements Storage {
 
   private final List<User> users;
 
-  public MemoryImpl() {
-    users = new ArrayList<>();
+  /**
+   * construct new memory to save all users.
+   * takes data from file and adds it to data structure.
+   */
+  public MemoryImpl(Storage file) throws Exception {
+    this.users = new ArrayList<>();
+    if (Objects.isNull(file)) {
+      return;
+    }
+    List<User> users = file.readAll(Field.NAME, Order.ASC);
+    if (Objects.nonNull(users) && users.size() != 0) {
+      this.save(users);
+    }
   }
 
   @Override
-  public void save(List<User> users) {
-    if (users.size() <= 1) {
+  public void save(List<User> inputUsers) {
+    if (inputUsers.size() <= 1) {
       for (int i = 0; i < this.users.size(); i++) {
-        if (this.users.get(i).getName().compareToIgnoreCase(users.get(0).getName()) >= 0) {
-          this.users.add(i, users.get(0));
+        if (this.users.get(i).getName().compareToIgnoreCase(inputUsers.get(0).getName()) >= 0) {
+          this.users.add(i, inputUsers.get(0));
           return;
         }
       }
-      this.users.add(users.get(0));
+      this.users.add(inputUsers.get(0));
     } else {
-      for (User u : users) {
+      for (User u : inputUsers) {
         this.users.add(u);
       }
       Collections.sort(this.users, Comparators.NameComparator);
@@ -36,24 +48,24 @@ public class MemoryImpl implements Storage {
 
   @Override
   public List<User> readAll(Field field, Order order) {
-    List<User> retUsers = users;
+    List<User> returnUsers = users;
     switch (field) {
       case AGE:
-        Collections.sort(retUsers, Comparators.AgeComparator);
+        Collections.sort(returnUsers, Comparators.AgeComparator);
         break;
       case ADDRESS:
-        Collections.sort(retUsers, Comparators.AddressComparator);
+        Collections.sort(returnUsers, Comparators.AddressComparator);
         break;
       case ROLL:
-        Collections.sort(retUsers, Comparators.RollNumComparator);
+        Collections.sort(returnUsers, Comparators.RollNumComparator);
         break;
       default:
-        retUsers = users;
+        returnUsers = users;
     }
     if (order == Order.DESC) {
-      Collections.reverse(retUsers);
+      Collections.reverse(returnUsers);
     }
-    return retUsers;
+    return returnUsers;
   }
 
   @Override
@@ -68,13 +80,11 @@ public class MemoryImpl implements Storage {
 
   @Override
   public User delete(String rollNum) {
-    for (User u : this.users) {
-      if (u.getRollNum().equals(rollNum)) {
-        User del = u;
-        this.users.remove(u);
-        return del;
-      }
+    User found = this.read(rollNum);
+    if (Objects.isNull(found)) {
+      return null;
     }
-    return null;
+    this.users.remove(found);
+    return found;
   }
 }

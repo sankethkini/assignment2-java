@@ -16,15 +16,11 @@ public class AddUser {
    * @param rollNum - roll number of the user.
    * @param address - address of the user.
    * @param age     - age of the user.
-   * @param input   - course input string.
+   * @param courses - courses selected by user.
    */
   public static void add(Storage memory, String name, String rollNum, String address, Integer age,
-                         String input)
+                         List<Course> courses)
       throws Exception {
-    InputValidators.validate(name, rollNum, address, age);
-    CheckIfRollExists.check(memory, rollNum);
-    List<Course> courses = ParseCourse.parse(input);
-
     User u = new User(name, age, address, rollNum, courses);
     List<User> users = new ArrayList<>();
     users.add(u);

@@ -14,10 +14,10 @@ public class DisplayConstants {
   public static final String SAVE_SUCCESS = "users saved successfully";
   public static final String EXITING = "Exiting .....";
   public static final String SORT_FIELD = "Enter the field by which you want to sort\n";
-  public static final String NAME = "1. Name";
-  public static final String ADDRESS = "2. Address";
-  public static final String ROLL = "3. Roll number";
-  public static final String AGE = "4. Age";
+  public static final String NAME = " 1. Name ";
+  public static final String ADDRESS = " 2. Address ";
+  public static final String ROLL = " 3. Roll number ";
+  public static final String AGE = " 4. Age ";
   public static final String ORDER_ENTER = "Enter the order\n";
   public static final String ASC = "1. ascending\n";
   public static final String DESC = "2. descending";
@@ -30,4 +30,5 @@ public class DisplayConstants {
   public static final String SAVE = "4. Save user details\n";
   public static final String EXIT = "5. Exit";
   public static final String CORR_OPTION = "enter the correct option";
+  public static final Character YES_OPTION = 'Y';
 }

@@ -10,12 +10,12 @@ import java.util.Scanner;
 public class Main {
   /**
    * main function calls initiate and runs application.
-   * */
+   */
   public static void main(String[] args) {
     try {
       Main main = new Main();
       Application application = main.intializeApplication();
-      application.getUserInputAndAct();
+      application.start();
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
